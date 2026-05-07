@@ -8,13 +8,13 @@ const tasksOfTheDay = [
 //* ============= Ajouter une tâche à la liste =============
 
 // Déclaration de la variable qui accueillera mon résultat
-// let newTaskList;
+let newTaskList;
 
 // Déclaration de la méthode de façon "abstraite" pour qu'elle s'adapte à n'importe quels paramètres qui lui seront passés.
-// const addTask = (taskList, newTask) => { newTaskList = [...taskList, newTask]; };
+const addTask = (taskList, newTask) => { newTaskList = [...taskList, newTask]; };
 
 // Appel de la fonction pour la tester
-// addTask(tasksOfTheDay, { title: 'Faire mes devoirs', done: false });
+addTask(tasksOfTheDay, { title: 'Faire mes devoirs', done: false });
 
 // Vérification du résultat dans la console
 // console.log(newTaskList);
@@ -33,5 +33,22 @@ const removeTask = (taskList, title) => {
 removeTask(tasksOfTheDay, "Faire les courses");
 
 // Vérification du résultat dans la console
-console.log(listAfterRemoval);
+// console.log(listAfterRemoval);
 
+//* ============= Basculer l'état d'une tâche de la liste =============
+
+// Déclaration de ma fonction fléchée pour modifier le status d'une tâche
+const toggleTaskStatus = (task) => {
+ // Je vérifie si task est à false.
+ // Si oui alors il lui est attribué l'opposé de false, donc true
+ // Si elle est déjà à true, on ne change rien
+ !task.done ? task.done = !task.done : task.done;
+ 
+ // Vérification du résultat dans la console
+ // console.log(task);
+ 
+ return task;
+}
+
+// Appel de ma fonction pour la tester
+toggleTaskStatus({ title: "Résoudre l'exercice", done: false});
