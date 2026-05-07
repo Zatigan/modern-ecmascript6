@@ -43,12 +43,36 @@ const toggleTaskStatus = (task) => {
  // Si oui alors il lui est attribué l'opposé de false, donc true
  // Si elle est déjà à true, on ne change rien
  !task.done ? task.done = !task.done : task.done;
- 
+
  // Vérification du résultat dans la console
  // console.log(task);
- 
+
  return task;
 }
 
 // Appel de ma fonction pour la tester
-toggleTaskStatus({ title: "Résoudre l'exercice", done: false});
+toggleTaskStatus({ title: "Résoudre l'exercice", done: false });
+
+//* ============= Afficher les listes de tâches =============
+
+const showTasks = (taskList, status) => {
+// Selon le status donné je tombe dans un cas
+ switch (status) {
+  case true:
+   // console.log(taskList.filter((task) => task.done == true));
+   // Je filtre et renvoie le tableau pour ne conserver que les tâches avec le status true
+   return taskList.filter((task) => task.done == true);
+   break;
+  case false:
+   // console.log(taskList.filter((task) => task.done == false));
+   // Je filtre et renvoie le tableau pour ne conserver que les tâches avec le status false
+   return taskList.filter((task) => task.done == false);
+   break;
+  default:
+   // console.log(taskList);
+   // Si j'ai autre chose ou pas de status, je renvoie la liste
+   return taskList;
+ }
+}
+// Appel de ma fonction pour la tester
+showTasks(tasksOfTheDay);
